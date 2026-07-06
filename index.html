@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Student OS - The AI Study Workspace</title>
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/modules/dashboard3d.css">
+  <link rel="stylesheet" href="css/modules/views.css">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="app-sidebar">
+      <div class="sidebar-header">
+        <div class="logo-icon">S</div>
+        <span class="logo-text">Student OS</span>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Core</div>
+        <a class="nav-item active" data-view="dashboard">
+          <!-- Home Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+          <span class="nav-text">3D Dashboard</span>
+        </a>
+        
+        <div class="nav-section-title">AI Academy</div>
+        <a class="nav-item" data-view="aitutor">
+          <!-- User / Tutor Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span class="nav-text">AI Tutor</span>
+        </a>
+        <a class="nav-item" data-view="pdfchat">
+          <!-- File Text Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          <span class="nav-text">PDF Chat</span>
+        </a>
+        <a class="nav-item" data-view="notes">
+          <!-- Edit Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4z"></path></svg>
+          <span class="nav-text">Smart Notes</span>
+        </a>
+        <a class="nav-item" data-view="quiz">
+          <!-- Help Circle Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          <span class="nav-text">AI Quiz</span>
+        </a>
+        <a class="nav-item" data-view="flashcards">
+          <!-- Copy / Layers Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          <span class="nav-text">Flashcards</span>
+        </a>
+
+        <div class="nav-section-title">Productivity</div>
+        <a class="nav-item" data-view="planner">
+          <!-- Calendar Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          <span class="nav-text">Study Planner</span>
+        </a>
+        <a class="nav-item" data-view="voice">
+          <!-- Mic Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+          <span class="nav-text">Voice AI</span>
+        </a>
+        <a class="nav-item" data-view="roadmaps">
+          <!-- Map / Roadmap Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg>
+          <span class="nav-text">AI Roadmaps</span>
+        </a>
+
+        <div class="nav-section-title">Career Hub</div>
+        <a class="nav-item" data-view="career">
+          <!-- Award Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+          <span class="nav-text">Career Mentor</span>
+        </a>
+        <a class="nav-item" data-view="resume">
+          <!-- Briefcase Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          <span class="nav-text">Resume Builder</span>
+        </a>
+
+        <div class="nav-section-title">Metrics</div>
+        <a class="nav-item" data-view="analytics">
+          <!-- Activity / Analytics Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          <span class="nav-text">Analytics</span>
+        </a>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <div class="user-avatar" id="profile-avatar"></div>
+        <div class="user-info">
+          <span class="user-name" id="profile-name">Alex Vance</span>
+          <span class="user-role" id="profile-role">CS Student • Level 4</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Workspace -->
+    <main class="main-workspace">
+      
+      <!-- Top Sticky Header -->
+      <header class="header">
+        <div class="header-left">
+          <button class="toggle-sidebar-btn" id="toggle-sidebar">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+          
+          <div class="search-bar-container">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" class="search-input" placeholder="Search commands, notes, cards..." id="global-search">
+          </div>
+        </div>
+        
+        <div class="header-right">
+          <!-- Notifications Center -->
+          <button class="header-action-btn" id="notifications-trigger">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <div class="badge-dot" id="notif-badge"></div>
+          </button>
+
+          <!-- Notifications Dropdown Overlay -->
+          <div class="notifications-dropdown" id="notifications-overlay">
+            <div class="notifications-header">
+              <span class="notifications-title">Notifications</span>
+              <button class="clear-notifications-btn" id="clear-notifications">Clear All</button>
+            </div>
+            <div class="notifications-list" id="notifications-list-container">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+      </header>
+      
+      <!-- Primary View Viewport -->
+      <div class="content-area">
+
+        <!-- 1. 3D DASHBOARD VIEW -->
+        <section class="app-view active" id="view-dashboard">
+          <div class="view-header">
+            <div class="view-title-container">
+              <h1 class="view-title">Command Center</h1>
+              <p class="view-subtitle">Welcome back, Alex. Your holographic study network is fully loaded.</p>
+            </div>
+          </div>
+          
+          <!-- 3D Arena Panel -->
+          <div class="dashboard-arena">
+            <canvas class="dashboard-canvas" id="dashboard-3d-canvas"></canvas>
+            <div class="dashboard-hologram-hud">
+              <div class="hud-panel hud-header">
+                <span class="hud-title">System Status</span>
+                <div class="hud-value">AI ENGINE • ACTIVE</div>
+              </div>
+              <div class="hud-panel hud-footer">
+                <span class="hud-ticker">SYS.MEM: 94.2% // NODE_STABILITY: MAX // STREAK: 5 DAYS</span>
+                <span style="color: var(--secondary); font-size: 11px;">DRAG & DRAG INTERACTION LOADED</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Metrics Grid -->
+          <div class="grid-4" style="margin-bottom: 40px;">
+            <div class="glass-card metric-pill">
+              <div class="metric-pill-icon">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <div class="metric-pill-info">
+                <span class="metric-pill-value" id="stat-focus-time">0m</span>
+                <span class="metric-pill-label">Focus Today</span>
+              </div>
+            </div>
+            <div class="glass-card metric-pill">
+              <div class="metric-pill-icon" style="color: var(--secondary); border-color: rgba(0, 229, 255, 0.2); background: rgba(0, 229, 255, 0.05);">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              </div>
+              <div class="metric-pill-info">
+                <span class="metric-pill-value" id="stat-notes-count">0</span>
+                <span class="metric-pill-label">Smart Notes</span>
+              </div>
+            </div>
+            <div class="glass-card metric-pill">
+              <div class="metric-pill-icon" style="color: var(--accent); border-color: rgba(255, 0, 127, 0.2); background: rgba(255, 0, 127, 0.05);">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              </div>
+              <div class="metric-pill-info">
+                <span class="metric-pill-value" id="stat-quiz-accuracy">0%</span>
+                <span class="metric-pill-label">Quiz Accuracy</span>
+              </div>
+            </div>
+            <div class="glass-card metric-pill">
+              <div class="metric-pill-icon" style="color: var(--success); border-color: rgba(0, 230, 118, 0.2); background: rgba(0, 230, 118, 0.05);">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+              </div>
+              <div class="metric-pill-info">
+                <span class="metric-pill-value" id="stat-cards-due">0</span>
+                <span class="metric-pill-label">Cards Review</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature Cards Grid (Quick Access Nodes) -->
+          <div class="dashboard-node-cards" id="dashboard-links-container">
+            <!-- Dynamically populated links -->
+          </div>
+        </section>
+
+        <!-- 2. AI TUTOR VIEW -->
+        <section class="app-view" id="view-aitutor">
+          <div class="view-header">
+            <div class="view-title-container">
+              <h1 class="view-title">AI Tutor</h1>
+              <p class="view-subtitle">Interactive personal learning assistant.</p>
+            </div>
+          </div>
+
+          <div class="tutor-layout">
+            <div class="tutor-sidebar">
+              <div class="glass-card">
+                <h3 class="card-title" style="font-size: 15px;">Tutor Configuration</h3>
+                <div class="form-group">
+                  <label class="form-label">Subject Domain</label>
+                  <select class="select-field" id="tutor-subject">
+                    <option value="STEM">Science & Technology (STEM)</option>
+                    <option value="Humanities">Humanities & Writing</option>
+                    <option value="Coding">Software Engineering</option>
+                    <option value="Languages">Languages & Linguistics</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Pedagogy Style</label>
+                  <select class="select-field" id="tutor-style">
+                    <option value="explainer">Interactive Explainer</option>
+                    <option value="socratic">Socratic Method (Ask Questions)</option>
+                    <option value="examiner">Exam Prep & Quizzer</option>
+                  </select>
+                </div>
+                <button class="btn btn-primary" id="btn-tutor-restart" style="width: 100%;">Reset Assistant</button>
+              </div>
+
+              <div class="glass-card">
+                <h3 class="card-title" style="font-size: 15px;">Smart Worksheets</h3>
+                <div style="display: flex; flex-direction: column; gap: 8px;" id="tutor-worksheets">
+                  <!-- Auto populated worksheets -->
+                </div>
+              </div>
+            </div>
+
+            <div class="tutor-chat-container">
+              <div class="chat-messages" id="tutor-chat-history">
+                <!-- Messages -->
+              </div>
+              <div class="chat-input-area">
+                <input type="text" class="input-field" placeholder="Ask a question or select a topic below..." id="tutor-chat-input">
+                <button class="btn btn-secondary btn-icon" id="tutor-voice-input-btn" title="Voice Input">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path></svg>
+                </button>
+                <button class="btn btn-primary" id="tutor-send-btn">Ask Tutor</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. PDF CHAT VIEW -->
+        <section class="app-view" id="view-pdfchat">
+          <div class="view-header">
+            <div class="view-title-container">
+              <h1 class="view-title">PDF Chat</h1>
+              <p class="view-subtitle">Load educational papers or textbooks and query them instantly.</p>
+            </div>
+          </div>
+
+          <div class="pdf-layout">
+            <!-- Left Pane: PDF Viewer -->
+            <div class="pdf-viewer-pane" id="pdf-viewer-container">
+              <div class="pdf-dropzone" id="pdf-upload-zone">
+                <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="var(--primary)" stroke-width="1.5" style="margin-bottom: 16px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                <p style="font-weight: 600; margin-bottom: 6px;">Select / Drag Study PDF Here</p>
+                <p style="font-size: 12px; color: var(--text-muted);">Simulated PDF indexing & vocabulary parser</p>
+                <input type="file" id="pdf-file-picker" style="display: none;" accept=".pdf">
+              </div>
+              <div id="pdf-active-page" class="pdf-mock-page" style="display: none;">
+                <!-- Filled dynamically with mock textbook details -->
+              </div>
+            </div>
+
+            <!-- Right Pane: PDF Chat Chatbot -->
+            <div class="tutor-chat-container">
+              <div class="chat-messages" id="pdf-chat-history">
+                <div class="chat-message assistant">
+                  Hello! Select a study PDF or textbook on the left. Once loaded, I will analyze the document, extract key terms, and we can discuss the syllabus, formulas, or summaries of the paper!
+                </div>
+              </div>
+              <div class="chat-input-area">
+                <input type="text" class="input-field" placeholder="Ask questions about the uploaded document..." id="pdf-chat-input" disabled>
+                <button class="btn btn-primary" id="pdf-send-btn" disabled>Query PDF</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. SMART NOTES VIEW -->
+        <section class="app-view" id="view-notes">
+          <div class="view-header">
+            <div class="view-title-container">
+              <h1 class="view-title">Smart Notes</h1>
+              <p class="view-subtitle">Interactive notes manager with Markdown rendering and AI Flashcard extractor.</p>
+            </div>
+            <div class="view-actions">
+              <button class="btn btn-secondary" id="btn-note-new">+ Create Note</button>
+              <button class="btn btn-accent" id="btn-note-extract-flashcards">Generate Flashcards</button>
+            </div>
+          </div>
+
+          <div class="notes-layout">
+            <!-- Sidebar: Notes list -->
+            <div class="notes-list-pane">
+              <div class="form-group" style="margin-bottom: 0;">
+                <input type="text" class="input-field" placeholder="Filter notes..." id="notes-filter-input">
+              </div>
+              <div class="notes-grid" id="notes-list-container">
+                <!-- Dynamically filled -->
+              </div>
+            </div>
+
+            <!-- Main: Editor and Preview Split -->
+            <div class="notes-editor-pane">
+              <!-- Code Editor Pane -->
+              <div class="note-editor-wrapper">
+                <div class="editor-header">
+                  <input type="text" id="note-title-input" class="input-field" style="border: none; padding: 0; background: transparent; font-weight: 700; font-size: 16px; width: 70%;" placeholder="Untitled Note">
+                  <input type="text" id="note-folder-input" class="input-field" style="border: none; padding: 0; background: transparent; font-size: 12px; color: var(--text-muted); width: 25%; text-align: right;" placeholder="General Folder">
+                </div>
+                <textarea class="note-textarea" id="note-editor-textarea" placeholder="Start typing notes in markdown..."></textarea>
+              </div>
+
+              <!-- Visual Preview Pane -->
+              <div class="note-editor-wrapper" style="background: rgba(8, 5, 20, 0.2);">
+                <div class="editor-header" style="border-bottom-color: transparent;">
+                  <span style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--primary);">Live Markdown Preview</span>
+                  <button class="btn btn-secondary btn-sm" id="btn-note-export">Export HTML</button>
+                </div>
+                <div class="note-preview" id="note-preview-pane">
+                  <!-- Markdown compiled preview -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. AI QUIZ VIEW -->
+        <section class="app-view" id="view-quiz">
+          <div class="view-header">
+            <div class="view-title-container">
+              <h1 class="view-title">AI Quiz Generator</h1>
+              <p class="view-subtitle">Generate dynamic timed exams on any subject with step-by-step grading explanations.</p>
+            </div>
+          </div>
+
+          <!-- Configuration Form -->
+          <div class="glass-card quiz-setup-card" id="quiz-setup-panel">
+            <h3 class="card-title">Setup Quiz Parameters</h3>
+            <div class="form-group">
+              <label class="form-label">Subject Topic</label>
+              <input type="text" class="input-field" id="quiz-topic" placeholder="e.g. Backpropagation, Cellular Respiration, Roman Empire...">
+            </div>
+            <div class="grid-2">
+              <div class="form-group">
+                <label class="form-label">Difficulty</label>
+                <select class="select-field" id="quiz-difficulty">
+                  <option value="easy">Beginner (Concept Review)</option>
+                  <option value="medium" selected>Intermediate (Standard Exam)</option>
+                  <option value="hard">Advanced (Technical Mastery)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Number of Questions</label>
+                <select class="select-field" id="quiz-num-questions">
+                  <option value="3">3 Quick Quiz</option>
+                  <option value="5" selected>5 Standard Quiz</option>
+                  <option value="10">10 Full Exam</option>
+                </select>
+              </div>
+            </div>
+            <button class="btn btn-primary" id="btn-quiz-start" style="width: 100%; margin-top: 10px;">Generate Quiz</button>
+          </div>
+
+          <!-- Quiz Active Arena -->
+          <div class="glass-card quiz-runner-card" id="quiz-runner-panel" style="display: none;">
+            <div class="quiz-timer-bar">
+              <div class="quiz-timer-fill" id="quiz-timer-indicator"></div>
+            </div>
+            <div class="view-header" style="margin-bottom: 20px;">
+              <span id="quiz-question-counter" class="badge badge-primary">Question 1 of 5</span>
+              <span id="quiz-time-text" style="font-family: monospace; font-size: 13px; color: var(--secondary);">Time: 30s</span>
+            </div>
+            <h2 id="quiz-question-title" style="font-size: 18px; margin-bottom: 20px;">What is backpropagation in the context of Deep Learning?</h2>
+            
+            <div class="quiz-options-list" id="quiz-options-container">
+              <!-- Choices populated dynamically -->
+            </div>
+
+            <div style="margin-top: 24px; display: flex; justify-content: flex-end;">
+              <button class="btn btn-primary" id="btn-quiz-next" disabled>Next Question</button>
+            </div>
+          </div>
+
+          <!-- Quiz Completion Panel -->
+          <div class="glass-card quiz-setup-card" id="quiz-result-panel" style="display: none; text-align: center;">
+            <h2 style="font-family: var(--font-display); font-size: 28px; margin-bottom: 12px;">Quiz Complete! 🎉</h2>
+            <div style="font-size: 64px; font-weight: 800; color: var(--secondary); margin: 20px 0;" id="quiz-final-score">80%</div>
+            <p id="quiz-result-comment" style="color: var(--text-secondary); margin-bottom: 24px;">Great job! You have acquired +200 XP.</p>
+            <div class="grid-2">
+              <button class="btn btn-secondary" id="btn-quiz-review-wrong">Review Answers</button>
+              <button class="btn btn-primary" id="btn-quiz-restart-flow">New Quiz</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. FLASHCARDS VIEW -->
+        <section class="app-view" id="view-flashcards">
+          <div class="view-header">
+            <div class="view-title-container">
+              <h1 class="view-title">Active Recall Decks</h1>
+              <p class="view-subtitle">Memorize core facts using spaced repetition scheduling algorithms.</p>
+            </div>
+            <div class="view-actions">
+              <button class="btn btn-secondary" id="btn-deck-create">+ New Deck</button>
+            </div>
+          </div>
+
+          <div class="flashcards-layout">
+            <!-- Sidebar: Decks list -->
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+              <div class="glass-card">
+                <h3 class="card-title" style="font-size: 15px;">Your Study Decks</h3>
+                <div style="display: flex; flex-direction: column; gap: 10px;" id="flashcards-deck-list">
+                  <!-- Dynamically populated -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Player Arena -->
+            <div class="glass-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 480px;">
+              <div id="deck-runner-empty" style="text-align: center;">
+                <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="var(--text-muted)" stroke-width="1.5" style="margin-bottom: 16px;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <h3 class="card-title">No Deck Active</h3>
+                <p style="color: var(--text-secondary); font-size: 13px; max-width: 320px; margin: 0 auto 20px auto;">Select one of your card decks on the left to start a Spaced Repetition study session.</p>
+              </div>
+
+              <div id="deck-runner-active" style="display: none; width: 100%;">
+                <div style="text-align: center; margin-bottom: 24px;">
+                  <span id="deck-session-name" style="font-weight: 700; color: var(--secondary);">Web Dev Decks</span>
+                  <p id="deck-session-counter" style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Card 1 of 3</p>
+                </div>
+                
+                <div class="flashcard-player-container">
+                  <!-- 3D Card Scene -->
+                  <div class="flashcard-3d-scene" id="flashcard-touch-box">
+                    <div class="flashcard-3d-card" id="flashcard-flipper">
+                      <!-- Front Face -->
+                      <div class="flashcard-face front">
+                        <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 16px; letter-spacing: 1px;">Question</div>
+                        <h2 id="card-front-content" style="font-size: 18px; line-height: 1.5; font-family: var(--font-display);">What is Closure in JavaScript?</h2>
+                        <div style="font-size: 11px; color: var(--primary); margin-top: 24px;">Click Card to Flip</div>
+                      </div>
+                      <!-- Back Face -->
+                      <div class="flashcard-face back">
+                        <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 16px; letter-spacing: 1px;">Answer</div>
+                        <p id="card-back-content" style="font-size: 14px; line-height: 1.6;">A closure is the combination of a function bundled together with references to its surrounding state.</p>
+                        <div style="font-size: 11px; color: var(--primary); margin-top: 24px;">Click Card to Flip Back</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Spaced Repetition Feedback -->
+                  <div class="srs-buttons-panel" id="card-srs-panel" style="visibility: hidden;">
+                    <button class="btn btn-secondary btn-sm" data-grade="again" style="border-color: var(--danger); color: #ff8a80;">Again (1m)</button>
+                    <button class="btn btn-secondary btn-sm" data-grade="hard" style="border-color: var(--warning); color: #ffff8d;">Hard (12h)</button>
+                    <button class="btn btn-secondary btn-sm" data-grade="good" style="border-color: var(--primary); color: #b388ff;">Good (3d)</button>
+                    <button class="btn btn-secondary btn-sm" data-grade="easy" style="border-color: var(--success); color: #b9f6ca;">Easy (7d)</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. STUDY PLANNER VIEW -->
+        <section class="app-view" id="view-planner">
+          <div class="view-header">
+            <div class="view-title-container">
+              <h1 class="view-title">Study Planner & Pomodoro</h1>
+              <p class="view-subtitle">Manage tasks via Kanban and run focusing study blocks with ambient tracks.</p>
+            </div>
+            <div class="view-actions">
+              <button class="btn btn-primary" id="btn-task-add">+ Add Task</button>
+            </div>
+          </div>
+
+          <div class="planner-layout">
+            <!-- Left: Kanban Board -->
+            <div class="kanban-board">
+              <div class="kanban-column">
+                <div class="kanban-column-header">
+                  <span class="kanban-column-title" style="color: var(--secondary);">To Do</span>
+                  <span class="badge badge-secondary" id="count-todo">0</span>
+                </div>
+                <div class="kanban-tasks-list" id="col-todo" data-status="todo">
+                  <!-- Dynamically populated -->
+                </div>
+              </div>
+              
+              <div class="kanban-column">
+                <div class="kanban-column-header">
+                  <span class="kanban-column-title" style="color: var(--primary);">In Progress</span>
+                  <span class="badge badge-primary" id="count-inprogress">0</span>
+                </div>
+                <div class="kanban-tasks-list" id="col-inprogress" data-status="in_progress">
+                  <!-- Dynamically populated -->
+                </div>
+              </div>
+
+              <div class="kanban-column">
+                <div class="kanban-column-header">
+                  <span class="kanban-column-title" style="color: var(--success);">Completed</span>
+                  <span class="badge badge-success" id="count-done">0</span>
+                </div>
+                <div class="kanban-tasks-list" id="col-done" data-status="done">
+                  <!-- Dynamically populated -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Pomodoro Timer -->
+            <div class="glass-card pomodoro-card">
+              <h3 class="card-title">Focus Session</h3>
+              <div class="pomodoro-timer-circle">
+                <svg class="pomodoro-svg" width="180" height="180">
+                  <circle class="pomodoro-track" cx="90" cy="90" r="80"></circle>
+                  <circle class="pomodoro-progress" id="pomodoro-progress" cx="90" cy="90" r="80" stroke-dasharray="502" stroke-dashoffset="0"></circle>
+                </svg>
+                <div class="pomodoro-time-display" id="pomodoro-time">25:00</div>
+              </div>
+
+              <div style="display: flex; gap: 8px;">
+                <button class="btn btn-primary btn-sm" id="btn-pomodoro-toggle">Start</button>
+                <button class="btn btn-secondary btn-sm" id="btn-pomodoro-reset">Reset</button>
+              </div>
+
+              <!-- Ambient Audio Simulator -->
+              <div class="ambient-selector">
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label">Ambient Soundscape</label>
+                  <select class="select-field" id="ambient-audio-select">
+                    <option value="none">Mute Ambient Track</option>
+                    <option value="lofi">Lofi Focus Beats 🎧</option>
+                    <option value="rain">Cosmic Rain Shower 🌧️</option>
+                    <option value="white">Static White Noise 💨</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 8. CAREER MENTOR VIEW -->
+        <section class="app-view" id="view-career">
+          <div class="view-header">
+            <div class="view-title-container">
+              <h1 class="view-title">Career Mentor</h1>
+              <p class="view-subtitle">AI analysis of career path suggestions, skill requirements, and market demand.</p>
+            </div>
+          </div>
+
+          <div class="career-mentor-container">
+            <div class="glass-card" id="career-step-1">
+              <h3 class="card-title">AI Career Assessment Questionnaire</h3>
+              <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 13px;">Answer these brief questions, and our mentor system will analyze target pathways, calculate academic skill gaps, and write a roadmap.</p>
+              
+              <div class="form-group">
+                <label class="form-label">What subjects or technology stacks excite you most?</label>
+                <input type="text" class="input-field" id="career-q1" placeholder="e.g. Python, neural networks, UI designing, molecular biology...">
+              </div>
+              <div class="form-group">
+                <label class="form-label">What industry environment do you prefer?</label>
+                <select class="select-field" id="career-q2">
+                  <option value="tech">Big Tech & Softwares</option>
+                  <option value="research">R&D, Academia & BioTech</option>
+                  <option value="finance">Quantitative Finance & Analytics</option>
+                  <option value="creative">Digital Arts & Web Products</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Tell us about your learning goals and preference.</label>
+                <textarea class="textarea-field" id="career-q3" placeholder="e.g. I prefer practical self-learning, want to build applications, and seek internship options soon..."></textarea>
+              </div>
+              
+              <button class="btn btn-primary" id="btn-career-submit" style="width: 100%;">Analyze Career Paths</button>
+            </div>
+
+            <!-- Career Report Panel -->
+            <div class="glass-card" id="career-report-panel" style="display: none;">
+              <div class="view-header" style="margin-bottom: 20px;">
+                <h3 class="card-title" style="margin-bottom: 0;">AI Career Assessment Report</h3>
+                <button class="btn btn-secondary btn-sm" id="btn-career-reset">Retake Quiz</button>
+              </div>
+
+              <div id="career-recommendation-details">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 9. RESUME BUILDER VIEW -->
+        <section class="app-view" id="view-resume">
+          <div class="view-header">
+            <div class="view-title-container">
+              <h1 class="view-title">Resume Builder</h1>
+              <p class="view-subtitle">Interactive resume editor formatted with clean layout parameters for PDF output.</p>
+            </div>
+            <div class="view-actions">
+              <button class="btn btn-secondary" id="btn-resume-load-mock">Load Sample Data</button>
+              <button class="btn btn-primary" id="btn-resume-download">Export / Print</button>
+            </div>
+          </div>
+
+          <div class="resume-layout">
+            <!-- Left Pane: Editor Form -->
+            <div class="resume-editor-pane">
+              <h3 class="card-title" style="font-size: 15px; margin-bottom: 16px;">Resume Details</h3>
+              <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="input-field" id="res-name" placeholder="Alex Vance">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email & Details</label>
+                <input type="text" class="input-field" id="res-contact" placeholder="alex@gmail.com | github.com/alexv">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Education Section</label>
+                <input type="text" class="input-field" id="res-education" placeholder="B.S. in Computer Science - State University">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Experience Bullet 1</label>
+                <textarea class="textarea-field" id="res-exp-1" style="min-height: 70px;" placeholder="Describe what you built and the impact (e.g. Developed ML pipelines...)"></textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Experience Bullet 2</label>
+                <textarea class="textarea-field" id="res-exp-2" style="min-height: 70px;" placeholder="Describe another project or role..."></textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Skills (Comma-separated)</label>
+                <input type="text" class="input-field" id="res-skills" placeholder="JavaScript, Python, React, PyTorch, Node.js">
+              </div>
+            </div>
+
+            <!-- Right Pane: Resume A4 Paper View -->
+            <div class="resume-preview-pane">
+              <div class="resume-a4-sheet" id="resume-sheet">
+                <div style="border-bottom: 2px solid #1a1a24; padding-bottom: 12px; margin-bottom: 16px; text-align: center;">
+                  <h1 id="lbl-res-name">Your Name</h1>
+                  <p id="lbl-res-contact" style="color: #555566; margin-top: 4px;">contact details</p>
+                </div>
+
+                <h2>Education</h2>
+                <div style="margin-bottom: 12px;">
+                  <p id="lbl-res-education" style="font-weight: 700;"></p>
+                </div>
+
+                <h2>Experience</h2>
+                <div style="margin-bottom: 12px; display: flex; flex-direction: column; gap: 8px;">
+                  <ul style="padding-left: 16px; margin: 0;">
+                    <li id="lbl-res-exp-1" style="margin-bottom: 4px;"></li>
+                    <li id="lbl-res-exp-2"></li>
+                  </ul>
+                </div>
+
+                <h2>Technical Skills</h2>
+                <div>
+                  <p id="lbl-res-skills"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 10. VOICE AI VIEW -->
+        <section class="app-view" id="view-voice">
+          <div class="view-header">
+            <div class="view-title-container">
+              <h1 class="view-title">Voice AI Helper</h1>
+              <p class="view-subtitle">Control the OS hands-free using real browser speech commands.</p>
+            </div>
+          </div>
+
+          <div class="voice-ai-container">
+            <div class="glass-card" style="width: 100%; padding: 40px; display: flex; flex-direction: column; align-items: center;">
+              <div class="voice-ai-globe" id="voice-activation-sphere">
+                <svg viewBox="0 0 24 24" width="36" height="36" fill="white"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"></path><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.54 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.38 6-6.92h-2z"></path></svg>
+              </div>
+
+              <h2 id="voice-status-heading" style="font-family: var(--font-display); font-size: 20px; margin-bottom: 8px;">Click Orbit to Talk</h2>
+              <p id="voice-status-subtext" style="color: var(--text-secondary); font-size: 13px; margin-bottom: 32px;">Speak command instructions. (Try: "Open notes" or "Start timer")</p>
+
+              <!-- Transcription bubble box -->
+              <div class="glass-card" style="width: 100%; padding: 20px; text-align: left; background: rgba(0, 0, 0, 0.2); border-color: rgba(255, 255, 255, 0.04);">
+                <span class="badge badge-secondary" style="margin-bottom: 8px;">Transcription</span>
+                <p id="voice-transcription-output" style="color: var(--text-primary); font-family: monospace; font-size: 14px; min-height: 24px;">"..."</p>
+              </div>
+
+              <div style="margin-top: 32px; width: 100%; text-align: left;">
+                <h4 style="font-size: 12px; text-transform: uppercase; color: var(--primary); margin-bottom: 12px; font-weight: 700;">Supported Audio Instructions:</h4>
+                <ul style="font-size: 12px; color: var(--text-secondary); padding-left: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                  <li><strong>"Open &lt;module&gt;"</strong> (e.g. Open Notes, Open Quiz)</li>
+                  <li><strong>"Start Pomodoro" / "Stop Pomodoro"</strong></li>
+                  <li><strong>"Create note &lt;title&gt;"</strong></li>
+                  <li><strong>"Reset timer"</strong></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 11. AI ROADMAP VIEW -->
+        <section class="app-view" id="view-roadmaps">
+          <div class="view-header">
+            <div class="view-title-container">
+              <h1 class="view-title">AI Study Roadmaps</h1>
+              <p class="view-subtitle">Interactive target milestones for specific subjects.</p>
+            </div>
+            <div class="view-actions">
+              <select class="select-field" id="roadmap-selector-dropdown">
+                <option value="cs">Computer Science & Development</option>
+                <option value="datascience">Data Science & AI Engineering</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="roadmap-container">
+            <div class="roadmap-svg-wrapper">
+              <svg class="roadmap-svg" id="roadmap-svg-element" viewBox="0 0 900 150">
+                <!-- SVG elements will be drawn dynamically -->
+              </svg>
+            </div>
+
+            <div class="grid-2">
+              <div class="glass-card" id="roadmap-node-info-pane">
+                <h3 class="card-title" id="lbl-node-title">Syllabus Node</h3>
+                <p id="lbl-node-desc" style="color: var(--text-secondary); font-size: 13px; line-height: 1.5; margin-bottom: 16px;">Select a roadmap milestone above to see recommended references, articles, and syllabus breakdowns.</p>
+                <div style="display: flex; gap: 8px;">
+                  <button class="btn btn-primary btn-sm" id="btn-node-mark-complete" disabled>Complete Milestone</button>
+                  <a class="btn btn-secondary btn-sm" id="btn-node-resource-link" target="_blank" style="display: none;">View Resource</a>
+                </div>
+              </div>
+
+              <div class="glass-card" style="display: flex; flex-direction: column; justify-content: center; text-align: center;">
+                <h3 class="card-title" style="margin-bottom: 8px;">Roadmap Mastery</h3>
+                <div style="font-size: 40px; font-weight: 800; color: var(--secondary);" id="roadmap-progress-percentage">40%</div>
+                <p style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">Total milestones checked on this roadmap.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 12. ANALYTICS VIEW -->
+        <section class="app-view" id="view-analytics">
+          <div class="view-header">
+            <div class="view-title-container">
+              <h1 class="view-title">Study Analytics</h1>
+              <p class="view-subtitle">Detailed tracking of your study focus hours, test scores, and retention statistics.</p>
+            </div>
+          </div>
+
+          <!-- Charts Grid -->
+          <div class="analytics-grid">
+            <div class="glass-card">
+              <h3 class="card-title">Study Focus Trends (Weekly)</h3>
+              <div class="chart-container" id="analytics-time-chart">
+                <!-- CSS styled bars represent hours -->
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--text-muted); padding: 0 10px; margin-top: 8px;">
+                <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+              </div>
+            </div>
+
+            <div class="glass-card">
+              <h3 class="card-title">Active Recall Retention Rate</h3>
+              <div class="chart-container" id="analytics-flashcards-chart">
+                <!-- CSS styled bars represent reviews completed -->
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--text-muted); padding: 0 10px; margin-top: 8px;">
+                <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Toast Notification Overlay Container -->
+  <div id="toast-container"></div>
+
+  <!-- Javascript Core and Modules -->
+  <script src="js/storage.js"></script>
+  <script src="js/voice-service.js"></script>
+  <script src="js/modules/dashboard3d.js"></script>
+  <script src="js/modules/aitutor.js"></script>
+  <script src="js/modules/pdfchat.js"></script>
+  <script src="js/modules/notes.js"></script>
+  <script src="js/modules/quiz.js"></script>
+  <script src="js/modules/flashcards.js"></script>
+  <script src="js/modules/planner.js"></script>
+  <script src="js/modules/career.js"></script>
+  <script src="js/modules/resume.js"></script>
+  <script src="js/modules/voice.js"></script>
+  <script src="js/modules/roadmap.js"></script>
+  <script src="js/modules/analytics.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
