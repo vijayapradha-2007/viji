@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        nav {
+            background: #111827;
+            color: white;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h2 {
+            color: #a78bfa;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: #111827;
+        }
+
+        .hero h1 span {
+            color: #7c3aed;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #7c3aed;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        .section {
+            padding: 60px 8%;
+            text-align: center;
+        }
+
+        .section h2 {
+            margin-bottom: 30px;
+            color: #111827;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            width: 280px;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            color: #7c3aed;
+        }
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <h2>My Portfolio</h2>
+
+        <div>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+
+            <h1>Hello, I'm <span>Vijayapradha</span></h1>
+
+            <p>
+                B.Tech IT Student | Developer | Cloud & DevOps Enthusiast
+            </p>
+
+            <a class="btn" href="#about">
+                Explore My Portfolio
+            </a>
+
+        </div>
+    </section>
+
+    <section class="section" id="about">
+
+        <h2>About Me</h2>
+
+        <p>
+            I am an Information Technology student interested in
+            software development, cloud computing, Docker and DevOps.
+        </p>
+
+    </section>
+
+    <section class="section" id="skills">
+
+        <h2>Skills</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Programming</h3>
+                <p>C++, Java, Python</p>
+            </div>
+
+            <div class="card">
+                <h3>Web Development</h3>
+                <p>HTML, CSS, JavaScript</p>
+            </div>
+
+            <div class="card">
+                <h3>Cloud & DevOps</h3>
+                <p>Docker, Git, GitHub, AWS</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section" id="contact">
+
+        <h2>Contact</h2>
+
+        <p>
+            Email: your-email@example.com
+        </p>
+
+    </section>
+
+    <footer>
+        <p>© 2026 Vijayapradha. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

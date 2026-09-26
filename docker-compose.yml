@@ -1,0 +1,6 @@
+services:
+  web:
+    build: .
+    container_name: my-nginx-container
+    ports:
+      - "8081:80"
